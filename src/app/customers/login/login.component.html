@@ -1,0 +1,29 @@
+<form [formGroup]="form" (ngSubmit)="varifyLogin()">
+  <div *ngIf="form.errors" class="alert alert-danger">
+    <div *ngIf="form.errors.inValidUser">User not exists.</div>
+    <div *ngIf="form.errors.inValid">Invalid email or password.</div>
+    <div *ngIf="form.errors.appError">Opps..! Some error occured.</div>
+  </div>
+  
+  <div class="form-group">
+    <label for="email">Email address</label>
+    
+    <input type="email" class="form-control" id="email" placeholder="Enter email" 
+      formControlName="email" inputLowercase [format]="'lowercase'" />
+
+    <span *ngIf="email.pending">Checking email</span>
+    <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+      <ul class="list-group">
+        <li *ngIf="email.errors.required" class="list-item">Email is required</li>
+        <li *ngIf="email.errors.email" class="list-item">Invalid email address</li>
+      </ul>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" />
+  </div>  
+  <button type="submit" class="btn btn-primary"
+    [disabled]="form.invalid"
+  >Sing-in</button>
+</form>
