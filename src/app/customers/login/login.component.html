@@ -1,48 +1,58 @@
-<div class="loginFormWrapper">
+<div class="container">
+  <div class="row">
+    
+    <div class="col-12">
 
-<form [formGroup]="form" (ngSubmit)="varifyLogin()">
+      <div class="loginFormWrapper">
 
-  <div *ngIf="form.errors" class="alert alert-danger">
-    <div *ngIf="form.errors.inValidUser">User not exists.</div>
-    <div *ngIf="form.errors.inValid">Invalid email or password.</div>
-    <div *ngIf="form.errors.appError">Opps..! Some error occured.</div>
-  </div>
+        <form [formGroup]="form" (ngSubmit)="varifyLogin()">
 
-  <div class="form-group">
-    <label for="email">Email address</label>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">
-          <fa name="at" animation=""></fa>
-        </span>
+          <div *ngIf="form.errors" class="alert alert-danger">
+            <div *ngIf="form.errors.inValidUser">User not exists.</div>
+            <div *ngIf="form.errors.inValid">Invalid email or password.</div>
+            <div *ngIf="form.errors.appError">Opps..! Some error occured.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <fa name="at" animation=""></fa>
+                </span>
+              </div>
+              <input type="email" class="form-control" id="email" placeholder="Enter address" formControlName="email" inputLowercase [format]="'lowercase'"
+              />
+              <div class="input-group-apend" *ngIf="email.pending">
+                <span class="input-group-text">
+                  <fa name="refresh" animation="spin"></fa>
+                </span>
+              </div>
+              <div class="input-group-apend" *ngIf="email.touched && email.valid">
+                <span class="input-group-text">
+                  <fa name="check" animation=""></fa>
+                </span>
+              </div>
+            </div>
+
+            <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+              <ul class="list-group">
+                <li *ngIf="email.errors.required" class="list-item">Email is required</li>
+                <li *ngIf="email.errors.email" class="list-item">Invalid email address</li>
+                <li *ngIf="email.errors.notExists" class="list-item">Email not exists</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" />
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Sing-in</button>
+        </form>
       </div>
-      <input type="email" class="form-control" id="email" placeholder="Enter address" formControlName="email" inputLowercase [format]="'lowercase'"
-      />
-      <div class="input-group-apend" *ngIf="email.pending">
-        <span class="input-group-text">
-          <fa name="refresh" animation="spin"></fa>
-        </span>
-      </div>
-      <div class="input-group-apend" *ngIf="email.touched && email.valid">
-        <span class="input-group-text">
-          <fa name="check" animation=""></fa>
-        </span>
-      </div>
+
     </div>
-
-    <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
-      <ul class="list-group">
-        <li *ngIf="email.errors.required" class="list-item">Email is required</li>
-        <li *ngIf="email.errors.email" class="list-item">Invalid email address</li>
-        <li *ngIf="email.errors.notExists" class="list-item">Email not exists</li>
-      </ul>
-    </div>
+    
   </div>
-
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" />
-  </div>
-  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Sing-in</button>
-</form>
 </div>
