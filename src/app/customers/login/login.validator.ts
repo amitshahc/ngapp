@@ -9,8 +9,9 @@ export class loginValidator {
         
     }*/
 
-    static notExists (c: AbstractControl) : Promise<ValidationErrors | null> 
+    static notExists (auth: AuthService)
     {        
+        /*
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     if(c.value != 'amit@yahoo.com')
@@ -19,7 +20,10 @@ export class loginValidator {
                         resolve(null);
                 }, 2000);
             });
-            /*return new Promise((resolve, reject) => {
+        */
+       return (c: AbstractControl) : Promise<ValidationErrors | null> =>
+       {
+            return new Promise((resolve, reject) => {
                 let email = c.value;
                 auth.isUserExists({'username': email})
                 .subscribe( 
@@ -32,7 +36,7 @@ export class loginValidator {
                         resolve({notExists: true});
                     }
                 );
-            })*/
-        
+            });    
+        }
     }
 }

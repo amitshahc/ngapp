@@ -15,7 +15,7 @@ import { loginValidator } from './login.validator';
 export class LoginComponent implements OnInit {
   
   form = new FormGroup({
-    email: new FormControl('',[Validators.required, Validators.email], loginValidator.notExists),
+    email: new FormControl('',[Validators.required, Validators.email], loginValidator.notExists(this.auth)),
     password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10)])
   })
 

@@ -1,3 +1,5 @@
+<div class="loginFormWrapper">
+
 <form [formGroup]="form" (ngSubmit)="varifyLogin()">
 
   <div *ngIf="form.errors" class="alert alert-danger">
@@ -11,24 +13,28 @@
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <span class="input-group-text">
-          <fa name="at" animation=""></fa>          
+          <fa name="at" animation=""></fa>
         </span>
       </div>
-      <input type="email" class="form-control" id="email" placeholder="Enter address" 
-        formControlName="email" 
-        inputLowercase [format]="'lowercase'" />      
-      <div class="input-group-prepend" *ngIf="email.pending">
-          <span class="input-group-text">
-            <fa name="refresh" animation="spin"></fa>          
-          </span>
-        </div>
+      <input type="email" class="form-control" id="email" placeholder="Enter address" formControlName="email" inputLowercase [format]="'lowercase'"
+      />
+      <div class="input-group-apend" *ngIf="email.pending">
+        <span class="input-group-text">
+          <fa name="refresh" animation="spin"></fa>
+        </span>
+      </div>
+      <div class="input-group-apend" *ngIf="email.touched && email.valid">
+        <span class="input-group-text">
+          <fa name="check" animation=""></fa>
+        </span>
+      </div>
     </div>
 
     <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
       <ul class="list-group">
         <li *ngIf="email.errors.required" class="list-item">Email is required</li>
         <li *ngIf="email.errors.email" class="list-item">Invalid email address</li>
-        <li *ngIf="email.errors.notExists" class="list-item">Email not exists</li>        
+        <li *ngIf="email.errors.notExists" class="list-item">Email not exists</li>
       </ul>
     </div>
   </div>
@@ -39,3 +45,4 @@
   </div>
   <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Sing-in</button>
 </form>
+</div>

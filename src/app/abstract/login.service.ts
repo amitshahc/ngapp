@@ -37,7 +37,10 @@ export abstract class LoginService {
       );
   }
 
-  isUserExists(user: {username: string}, url){    
+  isUserExists(user: {username: string}, url?){
+    
+    url = url ? url : this.url;
+
     return this.http.post(url, user)//, {observe: 'response'})
       .pipe(
         map(response => {console.log(response); return response;}),
