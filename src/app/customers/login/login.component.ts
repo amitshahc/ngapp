@@ -14,6 +14,8 @@ import { loginValidator } from './login.validator';
 })
 export class LoginComponent implements OnInit {
   
+  private user: any;
+
   form = new FormGroup({
     email: new FormControl('',[Validators.required, Validators.email], loginValidator.notExists(this.auth)),
     password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10)])
@@ -34,7 +36,13 @@ export class LoginComponent implements OnInit {
 
     this.auth.check(data)
       .subscribe((response: Response) => {
-        console.log(response.headers);
+        console.log("Response:", response);
+        this.user = response;
+
+        if(this.user.session)
+          window.location.href = '/customers/profile';
+        else
+          this.form.setErrors({ inValid : true});
       },
         (error: AppError) => {
           if (error instanceof NotFoundError) {

@@ -27,11 +27,13 @@ export abstract class LoginService {
   constructor(private http:HttpClient, private url: string) {    
   }
 
-  check(credential: Credentials) {
-    return this.http.post(this.url, credential)
+  check(credential: Credentials, url?) {
+    url = url ? url : this.url;
+
+    return this.http.post(url, credential)
       .pipe(
         //map((response) => { console.log(response.json()); return response.json() }),
-        map((response) => { console.log(response); return response }),
+        map((response) => { return response }),
         retry(0),
         catchError((error: Response) => { return this.handleError(error) })
       );
@@ -43,7 +45,7 @@ export abstract class LoginService {
 
     return this.http.post(url, user)//, {observe: 'response'})
       .pipe(
-        map(response => {console.log(response); return response;}),
+        map(response => { return response;}),
         catchError( error => this.handleError(error))
       )
   }
