@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 //import { InputLowercaseDirective } from './common/input-lowercase.directive';
 
 @NgModule({
@@ -12,7 +13,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule           
+    AppRoutingModule,
+    AngularFontAwesomeModule
   ],
   exports:[
     //InputLowercaseDirective
