@@ -1,7 +1,7 @@
 import { AbstractControl, ValidationErrors } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
 import { AppError } from "../../errors/app-error";
-import { HttpHeaders } from "@angular/common/http";
+//import { HttpHeaders } from "@angular/common/http";
 
 export class loginValidator {
     

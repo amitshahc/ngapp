@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from '../services/auth.service';
 import { InputLowercaseDirective } from '../common/input-lowercase.directive';
 import { AngularFontAwesomeModule} from 'angular-font-awesome';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { AngularFontAwesomeModule} from 'angular-font-awesome';
     AngularFontAwesomeModule,
     HttpClientModule
   ],
-  exports:[    
+  exports:[
   ],
   providers:[
     AuthService
@@ -29,6 +30,7 @@ import { AngularFontAwesomeModule} from 'angular-font-awesome';
   declarations: [
     ListComponent, 
     LoginComponent,
+    SignupComponent,
     InputLowercaseDirective    
   ]
 })

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {
@@ -9,8 +10,8 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'profile',
-    component: ListComponent
+    path: 'signup',
+    component: SignupComponent
   },  
   {
     path: '**',
