@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   private user: any;
 
   form = new FormGroup({
-    email: new FormControl('',[Validators.required, Validators.email], loginValidator.notExists(this.auth)),
+    email: new FormControl('',{validators:[Validators.required, Validators.email], asyncValidators:loginValidator.notExists(this.auth), updateOn:'change'}),    
     password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10)])
   })
 
@@ -28,6 +28,12 @@ export class LoginComponent implements OnInit {
 
   get email(){
     return this.form.get('email');
+  }
+  get password(){
+    return this.form.get('password');
+  }
+  log(p){
+    console.log(p);
   }
 
   varifyLogin() {
