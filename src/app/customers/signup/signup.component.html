@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="row">    
-    <div class="col-12">
+  <div class="row">
+    <div class="col-12">      
       <div class="signupform-wrapper">
-
+        <h2 class="mb-3">Register</h2>        
         <form [formGroup]="form" (ngSubmit)="varifyLogin()">
 
           <div *ngIf="form.errors" class="alert alert-danger">
@@ -12,11 +12,39 @@
           </div>
 
           <div class="form-group">
-            <label for="email">Email address</label>
+            <!-- <label for="email">Full Name</label> -->
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">
-                  <fa name="at" animation=""></fa>
+                  <fa name="user" class="fa-lg fa-fw" animation=""></fa>
+                </span>
+              </div>
+              <input type="text" class="form-control" id="fullname" placeholder="Full name" 
+                formControlName="fullname" inputLowercase [format]="'CamelCase'"
+              />
+            </div>
+
+            <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+              <ul class="list-group">
+                <li *ngIf="email.errors.required" class="list-item">Email is required.</li>
+                <li *ngIf="email.errors.email" class="list-item">Invalid email address.</li>
+                <li *ngIf="email.errors.notExists" class="list-item">Email does not exists.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div *ngIf="form.errors" class="alert alert-danger">
+            <div *ngIf="form.errors.inValidUser">User not exists.</div>
+            <div *ngIf="form.errors.inValid">Invalid email or password.</div>
+            <div *ngIf="form.errors.appError">Opps..! Some error occured.</div>
+          </div>
+
+          <div class="form-group">
+            <!-- <label for="email">Email address</label> -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <fa name="at" class="fa-lg fa-fw" animation=""></fa>
                 </span>
               </div>
               <input type="email" class="form-control" id="email" placeholder="Enter address" formControlName="email" inputLowercase [format]="'lowercase'"
@@ -43,10 +71,16 @@
           </div>
 
           <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" 
-              (change)="log(password)"
-            />
+            <!-- <label for="password">Password</label> -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <fa name="key" class="fa-lg fa-fw" animation=""></fa>
+                </span>
+              </div>
+              <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" (change)="log(password)"
+              />
+            </div>
           </div>
           <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
             <ul class="list-group">
@@ -55,12 +89,12 @@
               <li *ngIf="password.errors.maxlength" class="list-item">Password length must not exceed {{ password.errors.maxlength.requiredLength }} characters.</li>
             </ul>
           </div>
-          <button type="submit" class="btn btn-primary mr-1" [disabled]="form.invalid">Sing-in</button>
+          <button type="submit" class="btn btn-primary mr-1" [disabled]="form.invalid">Sing-Up</button>
           Or
-          <a routerLink="signup" class="m-0 p-1">Sign-Up</a>
+          <a routerLink="../login" class="m-0 p-1">Sign-In</a>
         </form>
-      </div>      
+      </div>
     </div>
-    
+
   </div>
 </div>
