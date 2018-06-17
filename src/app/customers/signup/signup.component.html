@@ -1,8 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">      
+    <div class="col-12">
       <div class="signupform-wrapper">
-        <h2 class="mb-3">Register</h2>        
+
+        <div class="clearfix">
+          <h2 class="mb-3 float-left">Register</h2>
+          <fa name="user-plus" class="fa-2x fa-fw float-right mb-2 text-secondary" animation=""></fa>
+        </div>
+
         <form [formGroup]="form" (ngSubmit)="varifyLogin()">
 
           <div *ngIf="form.errors" class="alert alert-danger">
@@ -19,8 +24,7 @@
                   <fa name="user" class="fa-lg fa-fw" animation=""></fa>
                 </span>
               </div>
-              <input type="text" class="form-control" id="fullname" placeholder="Full name" 
-                formControlName="fullname" inputLowercase [format]="'CamelCase'"
+              <input type="text" class="form-control" id="fullname" placeholder="Full name" formControlName="fullname" inputLowercase [format]="'CamelCase'"
               />
             </div>
 
