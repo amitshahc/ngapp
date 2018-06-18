@@ -1,6 +1,7 @@
-import { Component, OnInit, createPlatform } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { PasswordPolicy } from './password.validator';
+import { SignupValidator } from './signup.validator';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +12,7 @@ export class SignupComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
     this.createForm();
@@ -20,8 +21,8 @@ export class SignupComponent implements OnInit {
   createForm(){
     this.form = new FormGroup({
       fullname: new FormControl('', {validators: [ Validators.required, Validators.minLength(3), Validators.maxLength(30)] }),
-      email: new FormControl('', {validators: [ Validators.required, Validators.email], asyncValidators: null , updateOn: 'change' }),
-      password: new FormControl('', {validators: [ Validators.required, Validators.minLength(3), Validators.maxLength(10), PasswordPolicy.validate] })
+      email: new FormControl('', {validators: [ Validators.required, Validators.email], asyncValidators: SignupValidator.isExists(this.auth) , updateOn: 'change' }),
+      password: new FormControl('', {validators: [ Validators.required, Validators.minLength(3), Validators.maxLength(10), SignupValidator.validatePassword] })
     })
   }
 

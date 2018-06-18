@@ -62,7 +62,7 @@
               <ul class="list-group">
                 <li *ngIf="email.errors.required" class="list-item">Email is required.</li>
                 <li *ngIf="email.errors.email" class="list-item">Invalid email address.</li>
-                <li *ngIf="email.errors.notExists" class="list-item">Email does not exists.</li>
+                <li *ngIf="email.errors.isExists" class="list-item">Email is already taken.</li>
               </ul>
             </div>
           </div>
