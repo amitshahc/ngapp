@@ -1,5 +1,6 @@
 import { Component, OnInit, createPlatform } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { PasswordPolicy } from './password.validator';
 
 @Component({
   selector: 'app-signup',
@@ -18,13 +19,17 @@ export class SignupComponent implements OnInit {
 
   createForm(){
     this.form = new FormGroup({
-      fullname: new FormControl(''),
-      email: new FormControl(''),
-      password: new FormControl('')
+      fullname: new FormControl('', {validators: [ Validators.required, Validators.minLength(3), Validators.maxLength(30)] }),
+      email: new FormControl('', {validators: [ Validators.required, Validators.email], asyncValidators: null , updateOn: 'change' }),
+      password: new FormControl('', {validators: [ Validators.required, Validators.minLength(3), Validators.maxLength(10), PasswordPolicy.validate] })
     })
   }
 
   get fullname(){ return this.form.get('fullname')}
   get email(){ return this.form.get('email')}
   get password(){ return this.form.get('password')}
+
+  log(p){
+    console.log(p);
+  }
 }
