@@ -11,6 +11,7 @@ import { AuthService } from '../services/auth.service';
 import { InputLowercaseDirective } from '../common/input-lowercase.directive';
 import { AngularFontAwesomeModule} from 'angular-font-awesome';
 import { SignupComponent } from './signup/signup.component';
+import { TitleCaseDirective } from '../common/title-case.directive';
 
 @NgModule({
   imports: [
@@ -20,9 +21,9 @@ import { SignupComponent } from './signup/signup.component';
     ReactiveFormsModule,
     //HttpModule,
     AngularFontAwesomeModule,
-    HttpClientModule
+    HttpClientModule    
   ],
-  exports:[
+  exports:[    
   ],
   providers:[
     AuthService
@@ -31,7 +32,8 @@ import { SignupComponent } from './signup/signup.component';
     ListComponent, 
     LoginComponent,
     SignupComponent,
-    InputLowercaseDirective    
+    InputLowercaseDirective,
+    TitleCaseDirective
   ]
 })
 export class CustomersModule { }
