@@ -5,14 +5,12 @@
 
         <div class="clearfix">
           <h2 class="mb-3 float-left">Register</h2>
-          <fa name="user-plus" class="fa-2x fa-fw float-right mb-2 text-secondary" animation=""></fa>
+          <fa name="user-plus" class="fa-2x fa-fw float-right mb-2 text-secondary"></fa>
         </div>
 
-        <form [formGroup]="form" (ngSubmit)="varifyLogin()">
+        <form [formGroup]="form" (ngSubmit)="register()">
 
-          <div *ngIf="form.errors" class="alert alert-danger">
-            <div *ngIf="form.errors.inValidUser">User not exists.</div>
-            <div *ngIf="form.errors.inValid">Invalid email or password.</div>
+          <div *ngIf="form.errors" class="alert alert-danger">            
             <div *ngIf="form.errors.appError">Opps..! Some error occured.</div>
           </div>
 
@@ -24,7 +22,9 @@
                   <fa name="user" class="fa-lg fa-fw" animation=""></fa>
                 </span>
               </div>
-              <input type="text" class="form-control" id="fullname" placeholder="Full name" formControlName="fullname" toTitleCase />
+              <input type="text" class="form-control" id="fullname" placeholder="Full name" 
+                formControlName="fullname" 
+                toTitleCase appTrim />
             </div>
 
             <div *ngIf="fullname.touched && fullname.invalid" class="alert alert-danger py-1">
@@ -75,8 +75,8 @@
                   <fa name="key" class="fa-lg fa-fw" animation=""></fa>
                 </span>
               </div>
-              <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" 
-              ngModel (change)="log(password)"
+              <input type="password" class="form-control" id="password" placeholder="Password" 
+                formControlName="password"               
               />
             </div>
           </div>
@@ -92,12 +92,14 @@
               <li *ngIf="password.errors.space" class="list-item">Password must not contain any space in between.</li>              
             </ul>
           </div>
-          <button type="submit" class="btn btn-primary mr-1" [disabled]="form.invalid">Sing-Up</button>
+          <button type="submit" class="btn btn-primary mr-1" [disabled]="form.invalid">Sing-Up            
+              <fa *ngIf="form.pending" name="refresh" animation="spin"></fa>            
+          </button>
           Or
-          <a routerLink="../login" class="m-0 p-1">Sign-In</a>
+          <a routerLink="../login" class="m-0 p-1">Sign-In</a>          
         </form>
       </div>
     </div>
-
+    <!-- {{ form.value | json }} -->
   </div>
 </div>

@@ -12,6 +12,7 @@ import { InputLowercaseDirective } from '../common/input-lowercase.directive';
 import { AngularFontAwesomeModule} from 'angular-font-awesome';
 import { SignupComponent } from './signup/signup.component';
 import { TitleCaseDirective } from '../common/title-case.directive';
+import { TrimDirective } from '../common/trim.directive';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { TitleCaseDirective } from '../common/title-case.directive';
     LoginComponent,
     SignupComponent,
     InputLowercaseDirective,
-    TitleCaseDirective
+    TitleCaseDirective,
+    TrimDirective
   ]
 })
 export class CustomersModule { }

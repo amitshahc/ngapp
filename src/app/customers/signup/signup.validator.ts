@@ -24,7 +24,7 @@ export class SignupValidator {
         if  (p.search(/[!@#$%^&*]/) < 0) {
             report.special = true;            
         }
-        if  (p.search(/[\s]/) > 0) {
+        if  (p.search(/[\s]/g) > -1) {
             report.space = true;            
         }        
 
