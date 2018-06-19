@@ -13,6 +13,7 @@ import { AngularFontAwesomeModule} from 'angular-font-awesome';
 import { SignupComponent } from './signup/signup.component';
 import { TitleCaseDirective } from '../common/title-case.directive';
 import { TrimDirective } from '../common/trim.directive';
+import { CustomersService } from '../services/customers.service';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { TrimDirective } from '../common/trim.directive';
   exports:[    
   ],
   providers:[
-    AuthService
+    AuthService,
+    CustomersService
   ],
   declarations: [
     ListComponent, 

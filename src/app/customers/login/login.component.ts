@@ -15,6 +15,7 @@ import { loginValidator } from './login.validator';
 export class LoginComponent implements OnInit {
 
   private user: any;
+  showLoader: boolean = false;
 
   form = new FormGroup({
     email: new FormControl('', { validators: [Validators.required, Validators.email], asyncValidators: loginValidator.notExists(this.auth), updateOn: 'change' }),
@@ -36,19 +37,26 @@ export class LoginComponent implements OnInit {
     console.log(p);
   }
 
+  showLoading(show: boolean){
+    this.showLoader = show;
+  }
+
   varifyLogin() {
     let f = this.form;
     let data = { username: f.get('email').value, password: f.get('password').value };
+    this.showLoading(true);
 
     this.auth.check(data)
       .subscribe((response: Response) => {
-        console.log("Response:", response);
+        //console.log("Response:", response);
         this.user = response;
 
         if (this.user.session)
           window.location.href = '/customers/profile';
         else
           this.form.setErrors({ inValid: true });
+
+          this.showLoading(false);
       },
         (error: AppError) => {
           if (error instanceof NotFoundError) {
@@ -67,6 +75,8 @@ export class LoginComponent implements OnInit {
               appError: true
             });
           }
+
+          this.showLoading(false);
         });
   }
 

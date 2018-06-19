@@ -69,12 +69,19 @@
               <li *ngIf="password.errors.maxlength" class="list-item">Password length must not exceed {{ password.errors.maxlength.requiredLength }} characters.</li>
             </ul>
           </div>
-          <button type="submit" class="btn btn-primary mr-1" [disabled]="form.invalid">Sing-in</button>
+          <button type="submit" class="btn btn-primary mr-1" [disabled]="form.invalid">
+            Sing-in
+            <fa *ngIf="showLoader" name="refresh" animation="spin"></fa>
+          </button>
           Or
           <a routerLink="/customers/signup" class="m-0 p-1">Sign-Up</a>
         </form>
+        <div class="alert alert-secondary text-muted mt-3" role="alert">
+          Valid Credentials:<br /><i>Email: cust@ngapp.com<br />Password: cust1234</i>
+        </div>
+        
       </div>
-    </div>
-
+    </div>    
+    
   </div>
 </div>

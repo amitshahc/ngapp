@@ -92,8 +92,9 @@
               <li *ngIf="password.errors.space" class="list-item">Password must not contain any space in between.</li>              
             </ul>
           </div>
-          <button type="submit" class="btn btn-primary mr-1" [disabled]="form.invalid">Sing-Up            
-              <fa *ngIf="form.pending" name="refresh" animation="spin"></fa>            
+          <button type="submit" class="btn btn-primary mr-1" [disabled]="form.invalid">
+            Sing-Up
+            <fa *ngIf="showLoader" name="refresh" animation="spin"></fa>
           </button>
           Or
           <a routerLink="../login" class="m-0 p-1">Sign-In</a>          
