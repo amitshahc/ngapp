@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-//import { Http } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, retry } from 'rxjs/operators';
 import { throwError } from 'rxjs';
@@ -8,45 +7,30 @@ import { Unauthorized } from '../errors/unauthorized-error';
 import { AppError } from '../errors/app-error';
 import * as GLOBAL from '../globals';
 
-
-interface Credentials {
-  username: string,
-  password: string
-}
-
 @Injectable({
-  providedIn: 'root'  
+  providedIn: 'root'
 })
+export class UserService {
 
-export abstract class LoginService {
-  
-  // readonly USER_NOT_FOUND = 404;
-  // readonly UNAUTHENTICATED = 401;
- 
-  constructor(private http:HttpClient, private url: string) {    
-  }
+  constructor(private http: HttpClient, private url: string) { }
 
-  check(credential: Credentials, url?) {
-    url = url ? url : this.url;
-
-    return this.http.post(url, credential)
-      .pipe(
-        //map((response) => { console.log(response.json()); return response.json() }),
-        map((response) => { return response }),
-        retry(0),
-        catchError((error: Response) => { return this.handleError(error) })
-      );
-  }
-
-  isUserExists(user: {username: string}, url?){
+  getAll(url? : string){
     
     url = url ? url : this.url;
+    
+    return this.http.get(url).pipe(
+      map(response => { return response;}),
+      catchError( error => this.handleError(error))
+    )
+  }
 
-    return this.http.post(url, user)//, {observe: 'response'})
-      .pipe(
-        map(response => { return response;}),
-        catchError( error => this.handleError(error))
-      )
+  create(user, url? : string){  
+    url = url ? url : this.url;
+    
+    return this.http.post(url, user).pipe(
+      map(response => { return response;}),
+      catchError( error => this.handleError(error))
+    )
   }
 
   private handleError(error: any) {    

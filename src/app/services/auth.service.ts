@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { LoginService } from '../abstract/login.service';
 //import { Http } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
-import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
