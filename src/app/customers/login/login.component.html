@@ -4,10 +4,10 @@
     <div class="col-12">
 
       <div class="loginFormWrapper">
-        
+
         <div class="clearfix">
-            <h2 class="mb-3 float-left">Login</h2>
-          <fa name="sign-in" class="fa-2x fa-fw float-right mb-2 text-secondary" animation=""></fa>          
+          <h2 class="mb-3 float-left">Login</h2>
+          <fa name="sign-in" class="fa-2x fa-fw float-right mb-2 text-secondary" animation=""></fa>
         </div>
 
         <form [formGroup]="form" (ngSubmit)="varifyLogin()">
@@ -77,11 +77,14 @@
           <a routerLink="/customers/signup" class="m-0 p-1">Sign-Up</a>
         </form>
         <div class="alert alert-secondary text-muted mt-3" role="alert">
-          Valid Credentials:<br /><i>Email: cust@ngapp.com<br />Password: cust1234</i>
+          Valid Credentials:
+          <br />
+          <i>Email: cust@ngapp.com
+            <br />Password: cust1234</i>
         </div>
-        
+
       </div>
-    </div>    
-    
+    </div>
+
   </div>
 </div>
