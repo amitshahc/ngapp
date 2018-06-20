@@ -11,9 +11,8 @@ const routes: Routes = [
     loadChildren: '../app/orders/orders.module#OrdersModule'
   },
   {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
+    path: '**',
+    redirectTo: '',    
   }
 ];
 
