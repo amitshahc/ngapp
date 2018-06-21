@@ -15,8 +15,16 @@ export class CustomersService extends UserService {
   getAll(){
     return super.getAll("http://demo1601932.mockable.io/customers/get");
   }
+
+  get(uid){
+    return super.getUser(uid, "http://demo1601932.mockable.io/customer/get");
+  }
   
   create(user){
-    return super.create(user, "http://demo1601932.mockable.io/customers/add");
+    return super.create(user, "http://demo1601932.mockable.io/customers");
+  }
+
+  update(uid, userData){
+    return super.update(uid, userData, "http://demo1601932.mockable.io/customers")
   }
 }

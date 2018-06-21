@@ -68,7 +68,7 @@ export class SignupComponent implements OnInit {
         this.useradd = response;
 
         if (this.useradd.msg === "success")
-          window.location.href = '/customers/singin';
+          window.location.href = '/customers/profile';
         else
           this.form.setErrors({ inValid: true });
 

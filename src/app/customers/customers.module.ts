@@ -14,6 +14,7 @@ import { SignupComponent } from './signup/signup.component';
 import { TitleCaseDirective } from '../common/title-case.directive';
 import { TrimDirective } from '../common/trim.directive';
 import { CustomersService } from '../services/customers.service';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { CustomersService } from '../services/customers.service';
     SignupComponent,
     InputLowercaseDirective,
     TitleCaseDirective,
-    TrimDirective
+    TrimDirective,
+    ProfileComponent
   ]
 })
 export class CustomersModule { }
