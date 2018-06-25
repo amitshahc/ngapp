@@ -23,8 +23,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(private customer: CustomersService) { }
 
-  ngOnInit() {
-    this.createForm();
+  ngOnInit() {    
+    this.createForm();    
     this.customer.get(this.uid)
       .subscribe(response => {
         this.profile = response
@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
         'address': this.profile.address,
         'password': this.profile.password
       }
-    );
+    );    
   }
 
   createForm() {

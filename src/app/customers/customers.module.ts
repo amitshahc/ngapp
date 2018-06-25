@@ -15,6 +15,7 @@ import { TitleCaseDirective } from '../common/title-case.directive';
 import { TrimDirective } from '../common/trim.directive';
 import { CustomersService } from '../services/customers.service';
 import { ProfileComponent } from './profile/profile.component';
+import { httpInterceptorProviders } from '../interceptors/barrel';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   providers:[
     AuthService,
-    CustomersService
+    CustomersService,
+    httpInterceptorProviders
   ],
   declarations: [
     ListComponent, 
