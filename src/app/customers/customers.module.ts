@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CustomersRoutingModule } from './customers-routing.module';
-import { ListComponent } from './list/list.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from '../services/auth.service';
 import { InputLowercaseDirective } from '../common/input-lowercase.directive';
@@ -34,8 +33,7 @@ import { httpInterceptorProviders } from '../interceptors/barrel';
     CustomersService,
     httpInterceptorProviders
   ],
-  declarations: [
-    ListComponent, 
+  declarations: [    
     LoginComponent,
     SignupComponent,
     InputLowercaseDirective,
