@@ -1,0 +1,28 @@
+<div class="card" *ngIf="showDetails" id="cdCard">
+
+  <div id="cdLoader" *ngIf="showLoader">
+    <div id="loader-wrapper">
+      <fa name="spinner" class="fa-3x fa-fw" animation="pulse"></fa>
+    </div>
+  </div>
+
+  <!-- <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap"> -->
+  <div class="card-header">
+    {{custDetails?.name}}
+  </div>
+  <div class="card-body">
+    Company: {{custDetails?.company.name}}
+    <br>
+    <i>{{custDetails?.company.catchPhrase}}</i>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Phone: {{custDetails?.phone}}</li>
+    <li class="list-group-item">Website: {{custDetails?.website}}</li>
+  </ul>
+  <div class="card-body">
+    Address:
+    <div>
+      {{custDetails?.address.suite}}, {{custDetails?.address.street}}, {{custDetails?.address.city}}, {{custDetails?.address.zipcode}}
+    </div>
+  </div>
+</div>

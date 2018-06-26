@@ -27,4 +27,13 @@ export class CustomersService extends UserService {
   update(uid, userData){
     return super.update(uid, userData, "http://demo1601932.mockable.io/customers")
   }
+
+  //Admin
+  getall4Admin(){
+    return super.getAll("https://jsonplaceholder.typicode.com/users");
+  }
+
+  get4Admin(uid){
+    return super.getUser(uid, "https://jsonplaceholder.typicode.com/users");
+  }
 }
