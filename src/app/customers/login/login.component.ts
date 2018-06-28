@@ -5,6 +5,7 @@ import { NotFoundError } from '../../errors/notfound-error';
 import { Unauthorized } from '../../errors/unauthorized-error';
 import { AppError } from '../../errors/app-error';
 import { loginValidator } from './login.validator';
+import { Router } from '@angular/router';
 //import { InputLowercaseDirective } from '../../common/input-lowercase.directive';
 
 @Component({
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10)])
   })
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -52,7 +53,10 @@ export class LoginComponent implements OnInit {
         this.user = response;
 
         if (this.user.session)
-          window.location.href = '/customers/profile';
+        {
+          // window.location.href = '/customers/profile';
+          this.router.navigate(['/customers/profile']);
+        }
         else
           this.form.setErrors({ inValid: true });
 
