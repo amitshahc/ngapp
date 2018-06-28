@@ -12,24 +12,8 @@ export class CListComponent implements OnInit {
 
   filter: string = '';
   customers = [];
-  customersInit: any = [
-    {
-      "id": 1,
-      "fullname": "Amit Shah",
-      "email": "cust@ngapp.com",
-      "phone": "+91-123456789",
-      "password": "cust1234",
-      "address": "76, Shilpgram tenaments, Soma talav, Dabhoi ring road, Vadodara, Gujarat, India - 390025"
-    },
-    {
-      "id": 2,
-      "fullname": "Neel Shah",
-      "email": "neelshah@ngapp.com",
-      "phone": "+91-986532147",
-      "password": "neel1234",
-      "address": "403, Samanvay apt, beside Monalisha, Manjalpur, Vadodara, Gujarat, India - 390001"
-    }
-  ];
+  customersInit: any;
+  showList: boolean = false;
 
   constructor(private message: MessageService, private cs: CustomersService) { }
 
@@ -42,6 +26,7 @@ export class CListComponent implements OnInit {
       res => {
         this.customersInit = res;
         this.customers = this.customersInit;
+        this.showList = true;
       });
   }
 

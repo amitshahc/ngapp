@@ -40,17 +40,20 @@ export class CDetailsComponent implements OnInit {
   }
 
   getCustDetail() {
+    
     this.custDetails = null;
-    this.showDetails = true;
+    this.showDetails = false;
     this.showLoading(true);
+
     setTimeout(() =>{
     this.cs.get4Admin(this.customerId)
       .subscribe(response => {
         //console.log(response);
         this.custDetails = response;
-        this.showLoading(false);        
+        this.showLoading(false);
+        this.showDetails = true;        
       })
-    }, 2000);
+    }, 1000);
   }
 
   showLoading(show){

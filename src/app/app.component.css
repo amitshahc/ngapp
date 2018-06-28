@@ -11,10 +11,18 @@ header{
     /* border: 2px solid yellow; */
 }
 
+.push{
+    display: block;
+    /* border: 2px solid red; */
+    width: 100%;
+    height: 50px;
+    margin: 5px 0;
+}
+
 footer{
     color: aliceblue;
-    margin: 0;
-    padding: 0;
+    margin:  20px 0 0 0;
+    padding: 5px 2px;
     position: absolute;
     bottom: 0;
     width: 100%;
