@@ -18,10 +18,13 @@
   </div>
 </div>
 
-<div *ngIf="!showList">Loading..</div>
+<div class="row py-2" *ngIf="!showList">
+  <div class="col-sm-6 alert {{status.class}} mx-3">{{ status.text }}</div>
+</div>
 
-<div class="row bg-light py-2">
-  <div class="col-sm-6" *ngIf="showList">
+<div class="row bg-light py-2" *ngIf="showList">
+
+  <div class="col-sm-6">
 
     <div class="alert alert-danger mt-1" role="alert" *ngIf="customers.length < 1">
       No result found.
