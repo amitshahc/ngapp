@@ -5,7 +5,7 @@ import { Directive, HostListener, ElementRef } from '@angular/core';
 })
 export class TrimDirective {
 
-  constructor(private el: ElementRef) { }
+  constructor(private el?: ElementRef) { }
 
   @HostListener('change') onChange(){    
     

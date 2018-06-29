@@ -5,7 +5,7 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 })
 export class TitleCaseDirective {
 
-  constructor(private el: ElementRef) { }
+  constructor(private el?: ElementRef) { }
 
   @HostListener('keyup') onchange() {
 
