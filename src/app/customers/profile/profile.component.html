@@ -8,15 +8,20 @@
           <fa name="id-card-o" class="fa-2x fa-fw float-right mb-2 text-secondary"></fa>
         </div>
 
-        <form [formGroup]="form" (ngSubmit)="update()">
+        <div class="alert alert-info text-center" *ngIf="status.fetch.show">
+          <fa name="spinner" class="fa-3x fa-fw" animation="pulse"></fa>
+          <div class="">{{status.fetch.text}}</div>
+        </div>
 
-          <div *ngIf="form.errors" class="alert alert-danger">            
+        <form [formGroup]="form" (ngSubmit)="update()" *ngIf="!status.fetch.show">
+
+          <div *ngIf="form.errors" class="alert alert-danger">
             <div *ngIf="form.errors.appError">Opps..! Some error occured.</div>
-            <div *ngIf="form.errors.notFound">Error: Server not found.</div>
-            <div *ngIf="form.errors.unauthorized">Error: {{ form.errors.unauthorized.msg }}.</div>            
+            <div *ngIf="form.errors.notFound">Error: {{ form.errors.notFound.msg }}.</div>
+            <div *ngIf="form.errors.unauthorized">Error: {{ form.errors.unauthorized.msg }}.</div>
           </div>
 
-          <div *ngIf="updateSuccess" class="alert alert-success">            
+          <div *ngIf="updateSuccess" class="alert alert-success">
             Your profile has been updated successfully..!
           </div>
 
@@ -28,10 +33,8 @@
                   <fa name="user" class="fa-lg fa-fw" animation=""></fa>
                 </span>
               </div>
-              <input type="text" class="form-control" id="fullname" placeholder="Full name" 
-                formControlName="fullname" 
-                toTitleCase appTrim 
-                 />
+              <input type="text" class="form-control" id="fullname" placeholder="Full name" formControlName="fullname" toTitleCase appTrim
+              />
             </div>
 
             <div *ngIf="fullname.touched && fullname.invalid" class="alert alert-danger py-1">
@@ -41,7 +44,7 @@
                 <li *ngIf="fullname.errors.maxlength" class="list-item">Full name must not exceed {{ fullname.errors.maxlength.requiredLength }} in length.</li>
               </ul>
             </div>
-          </div>          
+          </div>
 
           <div class="form-group">
             <!-- <label for="email">Email address</label> -->
@@ -51,9 +54,8 @@
                   <fa name="at" class="fa-lg fa-fw" animation=""></fa>
                 </span>
               </div>
-              <input type="email" class="form-control" id="email" placeholder="Enter address" 
-                formControlName="email" inputLowercase [format]="'lowercase'"                
-              />              
+              <input type="email" class="form-control" id="email" placeholder="Enter address" formControlName="email" inputLowercase [format]="'lowercase'"
+              />
             </div>
 
             <div *ngIf="email.touched && email.invalid" class="alert alert-danger py-1">
@@ -65,35 +67,31 @@
             </div>
           </div>
 
-          <div class="form-group">            
+          <div class="form-group">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">
                   <fa name="phone" class="fa-lg fa-fw" animation=""></fa>
                 </span>
               </div>
-              <input type="text" class="form-control" id="phone" placeholder="Phone number (+XX-XXXXXXXX)" 
-                formControlName="phone"               
-              />
+              <input type="text" class="form-control" id="phone" placeholder="Phone number (+XX-XXXXXXXX)" formControlName="phone" />
             </div>
           </div>
 
           <div *ngIf="phone.touched && phone.invalid" class="alert alert-danger py-1">
             <ul class="list-group">
-              <li *ngIf="phone.errors.pattern" class="list-item">Invalid phone number</li>              
+              <li *ngIf="phone.errors.pattern" class="list-item">Invalid phone number</li>
             </ul>
           </div>
 
-          <div class="form-group">            
+          <div class="form-group">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">
                   <fa name="map-marker" class="fa-lg fa-fw" animation=""></fa>
                 </span>
               </div>
-              <textarea class="form-control" id="address"
-                formControlName="address"
-              ></textarea>              
+              <textarea class="form-control" id="address" formControlName="address"></textarea>
             </div>
           </div>
 
@@ -105,9 +103,7 @@
                   <fa name="key" class="fa-lg fa-fw" animation=""></fa>
                 </span>
               </div>
-              <input type="password" class="form-control" id="password" placeholder="Password" 
-                formControlName="password"               
-              />
+              <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" />
             </div>
           </div>
 
@@ -120,14 +116,14 @@
               <li *ngIf="password.errors.lower" class="list-item">Password must contain at least one Lowercase character.</li>
               <li *ngIf="password.errors.number" class="list-item">Password must contain at least one Numeric character.</li>
               <li *ngIf="password.errors.special" class="list-item">Password must contain at least one Special character.</li>
-              <li *ngIf="password.errors.space" class="list-item">Password must not contain any space in between.</li>              
+              <li *ngIf="password.errors.space" class="list-item">Password must not contain any space in between.</li>
             </ul>
           </div>
-          
+
           <button type="submit" class="btn btn-primary mr-1" [disabled]="form.invalid">
             Update
             <fa *ngIf="showLoader" name="refresh" animation="spin"></fa>
-          </button>             
+          </button>
         </form>
       </div>
     </div>

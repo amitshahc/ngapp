@@ -20,11 +20,24 @@ export class ProfileComponent implements OnInit {
   private phonePattern = "[+]{0,1}[0-9]{0,3}[-]{0,1}[0-9]{4,20}";
   private resUpdate: any;
   updateSuccess: boolean = false;
+  status = {    
+    fetch: {
+      show: false,
+      text: "Fetching account details",
+      class: "alert-info"
+    },
+    update: {
+      show: false,      
+      text: "Updating account details",
+      class: "alert-info"
+    }
+  }
 
   constructor(private customer: CustomersService) { }
 
-  ngOnInit() {    
-    this.createForm();    
+  ngOnInit() {
+    this.status.fetch.show = true;
+    this.createForm();
     this.customer.get(this.uid)
       .subscribe(response => {
         this.profile = response
@@ -41,7 +54,8 @@ export class ProfileComponent implements OnInit {
         'address': this.profile.address,
         'password': this.profile.password
       }
-    );    
+    );
+    this.status.fetch.show = false;
   }
 
   createForm() {

@@ -4,6 +4,7 @@ import { SignupValidator } from './signup.validator';
 import { AppError } from '../../errors/app-error';
 import { CustomersService } from '../../services/customers.service';
 import { AuthService } from '../../services/auth.service';
+import { Router, Route } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -14,9 +15,9 @@ export class SignupComponent implements OnInit {
 
   form: FormGroup;
   showLoader: boolean = false;
-  private useradd: any;
+  private useradd: any;  
 
-  constructor(private auth: AuthService, private customer: CustomersService) { }
+  constructor(private auth: AuthService, private customer: CustomersService, private router: Router) { }
 
   ngOnInit() {
     this.createForm();
@@ -68,7 +69,7 @@ export class SignupComponent implements OnInit {
         this.useradd = response;
 
         if (this.useradd.msg === "success")
-          window.location.href = '/customers/profile';
+          this.router.navigate(['/customers/login']);  //window.location.href = '/customers/profile';
         else
           this.form.setErrors({ inValid: true });
 

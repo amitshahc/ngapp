@@ -25,7 +25,7 @@ export class CustomersService extends UserService {
   }
 
   update(uid, userData){
-    return super.update(uid, userData, "http://demo1601932.mockable.io/customers")
+    return super.update(uid, userData, "http://demo1601932.mockable.io/customers");
   }
 
   //Admin
