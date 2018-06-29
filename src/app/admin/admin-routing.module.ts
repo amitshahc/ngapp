@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: 'customers',
     component: CListComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'customers'
   }
 ];
 

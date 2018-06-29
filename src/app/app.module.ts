@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { httpInterceptorProviders } from './interceptors/barrel';
+import { HomeComponent } from './public/home/home.component';
 //import { TrimDirective } from './common/trim.directive';
 //import { TitleCaseDirective } from './common/title-case.directive';
 //import { InputLowercaseDirective } from './common/input-lowercase.directive';
@@ -12,6 +13,7 @@ import { httpInterceptorProviders } from './interceptors/barrel';
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     //TrimDirective,
     //TitleCaseDirective,
     //InputLowercaseDirective    
