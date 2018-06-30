@@ -1,18 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, forwardRef, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, retry } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { NotFoundError } from '../errors/notfound-error';
 import { Unauthorized } from '../errors/unauthorized-error';
 import { AppError } from '../errors/app-error';
-import * as GLOBAL from '../globals';
+import * as GLOBAL from 'globals';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private url: string) { }
+  private http: HttpClient;  
+  
+  constructor(@Inject(forwardRef(() => HttpClient)) http:HttpClient, private url: string) {
+    this.http = http;    
+  }
 
   getAll(url? : string){
     

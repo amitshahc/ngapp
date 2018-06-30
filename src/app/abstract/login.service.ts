@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, forwardRef, Inject } from '@angular/core';
 //import { Http } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, retry } from 'rxjs/operators';
@@ -6,7 +6,7 @@ import { throwError } from 'rxjs';
 import { NotFoundError } from '../errors/notfound-error';
 import { Unauthorized } from '../errors/unauthorized-error';
 import { AppError } from '../errors/app-error';
-import * as GLOBAL from '../globals';
+import * as GLOBAL from 'globals';
 
 
 interface Credentials {
@@ -20,10 +20,14 @@ interface Credentials {
 
 export abstract class LoginService {
   
+
   // readonly USER_NOT_FOUND = 404;
   // readonly UNAUTHENTICATED = 401;
  
-  constructor(private http:HttpClient, private url: string) {    
+  private http: HttpClient;
+
+  constructor(@Inject(forwardRef(() => HttpClient)) http:HttpClient, private url: string) {    
+    this.http = http;
   }
 
   check(credential: Credentials, url?) {

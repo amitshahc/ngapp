@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../abstract/login.service';
 //import { Http } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class AuthService extends LoginService {
-
-  //protected url = "http://demo1601932.mockable.io/login-invalid";
+export class AuthService extends LoginService {  
   
   constructor(http: HttpClient) { 
     super(http, "http://demo1601932.mockable.io/login-invalid");  
