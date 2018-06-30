@@ -7,9 +7,10 @@ import { Unauthorized } from '../errors/unauthorized-error';
 import { AppError } from '../errors/app-error';
 import * as GLOBAL from 'globals';
 
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
+
 export class UserService {
 
   private http: HttpClient;  

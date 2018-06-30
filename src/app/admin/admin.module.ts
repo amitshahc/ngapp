@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+//import { UserService } from '../abstract/user.service';
 import { CustomersService } from '../services/customers.service';
 import { MessageService } from '../services/message.service';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -20,8 +21,8 @@ import { CDetailsComponent } from './c-details/c-details.component';
   declarations: [CListComponent, CDetailsComponent],
   providers:[
     MessageService,
-    CustomersService,
-    UserService
+    //UserService,
+    CustomersService
   ]
 })
 export class AdminModule { }

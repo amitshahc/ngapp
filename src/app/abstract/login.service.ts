@@ -14,9 +14,9 @@ interface Credentials {
   password: string
 }
 
-@Injectable({
-  providedIn: 'root'  
-})
+// @Injectable({
+//   providedIn: 'root'  
+// })
 
 export abstract class LoginService {
   
