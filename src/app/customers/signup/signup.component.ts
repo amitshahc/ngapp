@@ -33,7 +33,7 @@ export class SignupComponent implements OnInit {
         {
           validators: [Validators.required, Validators.email],
           asyncValidators: SignupValidator.isExists(this.auth),
-          updateOn: 'change'
+          updateOn: 'blur'
         }),
       password: new FormControl('',
         {

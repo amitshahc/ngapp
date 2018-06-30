@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   showLoader: boolean = false;
 
   form = new FormGroup({
-    email: new FormControl('', { validators: [Validators.required, Validators.email], asyncValidators: loginValidator.notExists(this.auth), updateOn: 'change' }),
+    email: new FormControl('', { validators: [Validators.required, Validators.email], asyncValidators: loginValidator.notExists(this.auth), updateOn: 'blur' }),
     password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10)])
   })
 
