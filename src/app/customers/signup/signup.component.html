@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="signupform-wrapper bg-light">
+
+        <div class="clearfix">
+          <h2 class="mb-3 float-left">Register</h2>
+          <fa name="user-plus" class="fa-2x fa-fw float-right mb-2 text-secondary"></fa>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="register()">
+
+          <div *ngIf="form.errors" class="alert alert-danger">            
+            <div *ngIf="form.errors.appError">Opps..! Some error occured.</div>
+          </div>
+
+          <div class="form-group">
+            <!-- <label for="email">Full Name</label> -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <fa name="user" class="fa-lg fa-fw" animation=""></fa>
+                </span>
+              </div>
+              <input type="text" class="form-control" id="fullname" placeholder="Full name" 
+                formControlName="fullname" 
+                toTitleCase appTrim />
+            </div>
+
+            <div *ngIf="fullname.touched && fullname.invalid" class="alert alert-danger py-1">
+              <ul class="list-group">
+                <li *ngIf="fullname.errors.required" class="list-item">Full name is mandatory</li>
+                <li *ngIf="fullname.errors.minlength" class="list-item">Full name must be minimum {{ fullname.errors.minlength.requiredLength }} in length.</li>
+                <li *ngIf="fullname.errors.maxlength" class="list-item">Full name must not exceed {{ fullname.errors.maxlength.requiredLength }} in length.</li>
+              </ul>
+            </div>
+          </div>          
+
+          <div class="form-group">
+            <!-- <label for="email">Email address</label> -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <fa name="at" class="fa-lg fa-fw" animation=""></fa>
+                </span>
+              </div>
+              <input type="email" class="form-control" id="email" placeholder="Enter address" formControlName="email" inputLowercase [format]="'lowercase'"
+              />
+              <div class="input-group-apend" *ngIf="email.pending">
+                <span class="input-group-text">
+                  <fa name="refresh" animation="spin"></fa>
+                </span>
+              </div>
+              <div class="input-group-apend" *ngIf="email.touched && email.valid">
+                <span class="input-group-text">
+                  <fa name="check" animation=""></fa>
+                </span>
+              </div>
+            </div>
+
+            <div *ngIf="email.touched && email.invalid" class="alert alert-danger py-1">
+              <ul class="list-group">
+                <li *ngIf="email.errors.required" class="list-item">Email is required.</li>
+                <li *ngIf="email.errors.email" class="list-item">Invalid email address.</li>
+                <li *ngIf="email.errors.isExists" class="list-item">Email is already taken.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <!-- <label for="password">Password</label> -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <fa name="key" class="fa-lg fa-fw" animation=""></fa>
+                </span>
+              </div>
+              <input type="password" class="form-control" id="password" placeholder="Password" 
+                formControlName="password"               
+              />
+            </div>
+          </div>
+          <div *ngIf="password.touched && password.invalid" class="alert alert-danger py-1">
+            <ul class="list-group">
+              <li *ngIf="password.errors.required" class="list-item">Password is required</li>
+              <li *ngIf="password.errors.minlength" class="list-item">Password must be at least {{ password.errors.minlength.requiredLength }} characters long.</li>
+              <li *ngIf="password.errors.maxlength" class="list-item">Password length must not exceed {{ password.errors.maxlength.requiredLength }} characters.</li>
+              <li *ngIf="password.errors.upper" class="list-item">Password must contain at least one Uppercase character.</li>
+              <li *ngIf="password.errors.lower" class="list-item">Password must contain at least one Lowercase character.</li>
+              <li *ngIf="password.errors.number" class="list-item">Password must contain at least one Numeric character.</li>
+              <li *ngIf="password.errors.special" class="list-item">Password must contain at least one Special character.</li>
+              <li *ngIf="password.errors.space" class="list-item">Password must not contain any space in between.</li>              
+            </ul>
+          </div>
+          <button type="submit" class="btn btn-primary mr-1" [disabled]="form.invalid">
+            Sing-Up
+            <fa *ngIf="showLoader" name="refresh" animation="spin"></fa>
+          </button>
+          Or
+          <a routerLink="../login" class="m-0 p-1">Sign-In</a>          
+        </form>
+      </div>
+    </div>
+    <!-- {{ form.value | json }} -->
+  </div>
+</div>

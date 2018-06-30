@@ -3,21 +3,30 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { httpInterceptorProviders } from './interceptors/barrel';
+import { HomeComponent } from './public/home/home.component';
+//import { TrimDirective } from './common/trim.directive';
+//import { TitleCaseDirective } from './common/title-case.directive';
 //import { InputLowercaseDirective } from './common/input-lowercase.directive';
 
 @NgModule({
   declarations: [
-    AppComponent,    
+    AppComponent,
+    HomeComponent,
+    //TrimDirective,
+    //TitleCaseDirective,
     //InputLowercaseDirective    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule           
+    AppRoutingModule,
+    AngularFontAwesomeModule,    
   ],
   exports:[
-    //InputLowercaseDirective
+    //InputLowercaseDirective    
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

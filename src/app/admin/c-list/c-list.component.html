@@ -1,0 +1,53 @@
+<div class="row">
+
+  <!-- <div class="col-sm-3"></div> -->
+  <div class="col-sm-12">
+
+    <h3>Customer List</h3>
+
+    <form class="" role="form">
+      <div class="input-group my-3">
+        <input class=" px-2" type="text" name="filter" [(ngModel)]="filter" (keyup)="filterList()" placeholder="Search" />
+        <div class="input-group-apend">
+          <span class="input-group-text">
+            <fa name="search" animation=""></fa>
+          </span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row py-2" *ngIf="!showList">
+  <div class="col-sm-6 alert {{status.class}} mx-3">{{ status.text }}</div>
+</div>
+
+<div class="row bg-light py-2" *ngIf="showList">
+
+  <div class="col-sm-6">
+
+    <div class="alert alert-danger mt-1" role="alert" *ngIf="customers.length < 1">
+      No result found.
+    </div>
+
+    <div class="card" *ngFor="let c of customers">
+      <div class="card-body">
+        <h5 class="card-title">
+          <a href="javascript: void(0)" (click)="sendCustId(c.id)"> {{ c.name }} </a>
+        </h5>
+        <div class="card-text">
+          <div>Email: {{c.email}}</div>
+          <!-- <div>Phone: {{c.phosne}}</div>
+          <div>Address: {{c.address}}</div> -->
+        </div>
+        <!-- <a href="#" class="btn btn-primary">{{c.phone}}</a> -->
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-sm-6 my-0">
+    <admin-c-details></admin-c-details>
+  </div>
+
+</div>

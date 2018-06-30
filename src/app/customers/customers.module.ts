@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-
-import { CustomersRoutingModule } from './customers-routing.module';
-import { ListComponent } from './list/list.component';
-import { LoginComponent } from './login/login.component';
+//import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
+import { CustomersService } from '../services/customers.service';
+import { httpInterceptorProviders } from '../interceptors/barrel';
+import { CustomersRoutingModule } from './customers-routing.module';
+import { LoginComponent } from './login/login.component';
 import { InputLowercaseDirective } from '../common/input-lowercase.directive';
+import { AngularFontAwesomeModule} from 'angular-font-awesome';
+import { SignupComponent } from './signup/signup.component';
+import { TitleCaseDirective } from '../common/title-case.directive';
+import { TrimDirective } from '../common/trim.directive';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -15,17 +21,24 @@ import { InputLowercaseDirective } from '../common/input-lowercase.directive';
     CustomersRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule    
+    //HttpModule,
+    AngularFontAwesomeModule,
+    HttpClientModule    
   ],
   exports:[    
   ],
   providers:[
-    AuthService
+    AuthService,
+    CustomersService,
+    httpInterceptorProviders
   ],
-  declarations: [
-    ListComponent, 
+  declarations: [    
     LoginComponent,
-    InputLowercaseDirective    
+    SignupComponent,
+    InputLowercaseDirective,
+    TitleCaseDirective,
+    TrimDirective,
+    ProfileComponent
   ]
 })
 export class CustomersModule { }

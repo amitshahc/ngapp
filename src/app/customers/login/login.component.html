@@ -1,29 +1,90 @@
-<form [formGroup]="form" (ngSubmit)="varifyLogin()">
-  <div *ngIf="form.errors" class="alert alert-danger">
-    <div *ngIf="form.errors.inValidUser">User not exists.</div>
-    <div *ngIf="form.errors.inValid">Invalid email or password.</div>
-    <div *ngIf="form.errors.appError">Opps..! Some error occured.</div>
-  </div>
-  
-  <div class="form-group">
-    <label for="email">Email address</label>
-    
-    <input type="email" class="form-control" id="email" placeholder="Enter email" 
-      formControlName="email" inputLowercase [format]="'lowercase'" />
+<div class="container">
+  <div class="row">
 
-    <span *ngIf="email.pending">Checking email</span>
-    <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
-      <ul class="list-group">
-        <li *ngIf="email.errors.required" class="list-item">Email is required</li>
-        <li *ngIf="email.errors.email" class="list-item">Invalid email address</li>
-      </ul>
+    <div class="col-12">
+
+      <div class="loginFormWrapper bg-light">
+
+        <div class="clearfix">
+          <h2 class="mb-3 float-left">Login</h2>
+          <fa name="sign-in" class="fa-2x fa-fw float-right mb-2 text-secondary" animation=""></fa>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="varifyLogin()">
+
+          <div *ngIf="form.errors" class="alert alert-danger">
+            <div *ngIf="form.errors.inValidUser">User not exists.</div>
+            <div *ngIf="form.errors.inValid">Invalid email or password.</div>
+            <div *ngIf="form.errors.appError">Opps..! Some error occured.</div>
+          </div>
+
+          <div class="form-group">
+            <!-- <label for="email">Email address</label> -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <fa name="at" class="fa-lg fa-fw" animation=""></fa>
+                </span>
+              </div>
+              <input type="email" class="form-control" id="email" placeholder="Enter address" formControlName="email" inputLowercase [format]="'lowercase'"
+              />
+              <div class="input-group-apend" *ngIf="email.pending">
+                <span class="input-group-text">
+                  <fa name="refresh" animation="spin"></fa>
+                </span>
+              </div>
+              <div class="input-group-apend" *ngIf="email.touched && email.valid">
+                <span class="input-group-text">
+                  <fa name="check" animation=""></fa>
+                </span>
+              </div>
+            </div>
+
+            <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+              <ul class="list-group">
+                <li *ngIf="email.errors.required" class="list-item">Email is required.</li>
+                <li *ngIf="email.errors.email" class="list-item">Invalid email address.</li>
+                <li *ngIf="email.errors.notExists" class="list-item">Email does not exists.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <!-- <label for="password">Password</label> -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <fa name="key" class="fa-lg fa-fw" animation=""></fa>
+                </span>
+              </div>
+              <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" (change)="log(password)"
+              />
+            </div>
+          </div>
+
+          <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+            <ul class="list-group">
+              <li *ngIf="password.errors.required" class="list-item">Password is required</li>
+              <li *ngIf="password.errors.minlength" class="list-item">Password must be at least {{ password.errors.minlength.requiredLength }} characters long.</li>
+              <li *ngIf="password.errors.maxlength" class="list-item">Password length must not exceed {{ password.errors.maxlength.requiredLength }} characters.</li>
+            </ul>
+          </div>
+          <button type="submit" class="btn btn-primary mr-1" [disabled]="form.invalid">
+            Sing-in
+            <fa *ngIf="showLoader" name="refresh" animation="spin"></fa>
+          </button>
+          Or
+          <a routerLink="/customers/signup" class="m-0 p-1">Sign-Up</a>
+        </form>
+        <div class="alert alert-secondary text-muted mt-3" role="alert">
+          Valid Credentials:
+          <br />
+          <i>Email: cust@ngapp.com
+            <br />Password: cust1234</i>
+        </div>
+
+      </div>
     </div>
+
   </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" />
-  </div>  
-  <button type="submit" class="btn btn-primary"
-    [disabled]="form.invalid"
-  >Sing-in</button>
-</form>
+</div>

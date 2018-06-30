@@ -8,9 +8,9 @@ export class InputLowercaseDirective {
 
   @Input('format') format: string;
 
-  constructor(private el: ElementRef) { }
+  constructor(private el?: ElementRef) { }
 
-  @HostListener('keypress') onChange(){    
+  @HostListener('keyup') onChange(){    
     if(this.format == 'lowercase')
     {
       let value: string = this.el.nativeElement.value;

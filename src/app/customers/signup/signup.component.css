@@ -1,4 +1,4 @@
-.loginFormWrapper{
+.signupform-wrapper {
     margin: 50px auto;
     max-width: 500px;
     height: auto;
@@ -7,6 +7,5 @@
 }
 
 ul {
-    list-style-type: none;
-    line-height: 0.5;
+    list-style-type: none;    
 }

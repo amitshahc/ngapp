@@ -1,0 +1,20 @@
+#cdCard{
+    position: relative;
+}
+
+#cdLoader{
+    position: relative;
+    top: 0;
+    bottom: 0;
+    height: 20rem;
+    width: 100%;
+    z-index: 100;
+    background-color: silver;
+    opacity: 0.5;
+}
+
+#loader-wrapper{
+    position: relative;
+    top: 35%;
+    left: 45%;
+}
