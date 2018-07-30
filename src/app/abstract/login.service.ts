@@ -6,7 +6,7 @@ import { throwError } from 'rxjs';
 import { NotFoundError } from '../errors/notfound-error';
 import { Unauthorized } from '../errors/unauthorized-error';
 import { AppError } from '../errors/app-error';
-import * as GLOBAL from 'globals';
+import * as GLOBAL from '../globals';
 
 
 interface Credentials {
@@ -58,11 +58,11 @@ export abstract class LoginService {
     if (error.status as number === GLOBAL.USER_NOT_FOUND) {      
       return throwError(new NotFoundError(error));
     }
-    else if (error.status as number === GLOBAL.UNAUTHENTICATED) {      
-      let e = new Unauthorized(error);      
+    else if (error.status as number === GLOBAL.UNAUTHENTICATED) {
+      let e = new Unauthorized(error);
       return throwError(e);
     }
-    else {      
+    else {
       return throwError(new AppError(error));
     }
   }

@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     return this.form.get('password');
   }
   log(p) {
-    console.log(p);
+    //console.log(p);
   }
 
   showLoading(show: boolean){

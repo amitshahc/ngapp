@@ -5,7 +5,7 @@ import { throwError } from 'rxjs';
 import { NotFoundError } from '../errors/notfound-error';
 import { Unauthorized } from '../errors/unauthorized-error';
 import { AppError } from '../errors/app-error';
-import * as GLOBAL from 'globals';
+import * as GLOBAL from '../globals';
 
 // @Injectable({
 //   providedIn: 'root'

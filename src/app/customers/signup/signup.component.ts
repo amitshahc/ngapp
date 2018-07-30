@@ -65,7 +65,7 @@ export class SignupComponent implements OnInit {
 
     this.customer.create(user)
       .subscribe((response: Response) => {
-        console.log("Response:", response);
+        //console.log("Response:", response);
         this.useradd = response;
 
         if (this.useradd.msg === "success")

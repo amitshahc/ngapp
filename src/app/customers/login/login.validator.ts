@@ -28,11 +28,11 @@ export class loginValidator {
                 auth.isUserExists({'username': email})
                 .subscribe( 
                     (response) => { 
-                        console.log(response); 
+                        //console.log(response); 
                         resolve(null);
                     },
                     (error: AppError) => {
-                        console.log(error);
+                        //console.log(error);
                         resolve({notExists: true});
                     }
                 );

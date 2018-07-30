@@ -10,7 +10,7 @@
 
         <form [formGroup]="form" (ngSubmit)="register()">
 
-          <div *ngIf="form.errors" class="alert alert-danger">            
+          <div *ngIf="form.errors" class="alert alert-danger">
             <div *ngIf="form.errors.appError">Opps..! Some error occured.</div>
           </div>
 
@@ -22,9 +22,8 @@
                   <fa name="user" class="fa-lg fa-fw" animation=""></fa>
                 </span>
               </div>
-              <input type="text" class="form-control" id="fullname" placeholder="Full name" 
-                formControlName="fullname" 
-                toTitleCase appTrim />
+              <input type="text" class="form-control" id="fullname" placeholder="Full name" formControlName="fullname" toTitleCase appTrim
+              />
             </div>
 
             <div *ngIf="fullname.touched && fullname.invalid" class="alert alert-danger py-1">
@@ -34,7 +33,7 @@
                 <li *ngIf="fullname.errors.maxlength" class="list-item">Full name must not exceed {{ fullname.errors.maxlength.requiredLength }} in length.</li>
               </ul>
             </div>
-          </div>          
+          </div>
 
           <div class="form-group">
             <!-- <label for="email">Email address</label> -->
@@ -75,9 +74,7 @@
                   <fa name="key" class="fa-lg fa-fw" animation=""></fa>
                 </span>
               </div>
-              <input type="password" class="form-control" id="password" placeholder="Password" 
-                formControlName="password"               
-              />
+              <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" />
             </div>
           </div>
           <div *ngIf="password.touched && password.invalid" class="alert alert-danger py-1">
@@ -89,7 +86,7 @@
               <li *ngIf="password.errors.lower" class="list-item">Password must contain at least one Lowercase character.</li>
               <li *ngIf="password.errors.number" class="list-item">Password must contain at least one Numeric character.</li>
               <li *ngIf="password.errors.special" class="list-item">Password must contain at least one Special character.</li>
-              <li *ngIf="password.errors.space" class="list-item">Password must not contain any space in between.</li>              
+              <li *ngIf="password.errors.space" class="list-item">Password must not contain any space in between.</li>
             </ul>
           </div>
           <button type="submit" class="btn btn-primary mr-1" [disabled]="form.invalid">
@@ -97,8 +94,15 @@
             <fa *ngIf="showLoader" name="refresh" animation="spin"></fa>
           </button>
           Or
-          <a routerLink="../login" class="m-0 p-1">Sign-In</a>          
+          <a routerLink="../login" class="m-0 p-1">Sign-In</a>
         </form>
+
+        <div class="alert alert-secondary text-muted mt-3" role="alert">
+          Valid Credentials:
+          <br />
+          <i>Email: cust@ngapp.com</i>
+        </div>
+
       </div>
     </div>
     <!-- {{ form.value | json }} -->
